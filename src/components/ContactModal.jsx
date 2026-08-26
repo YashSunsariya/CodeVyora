@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Button, Form, Modal } from 'react-bootstrap'
-import { FaCheckCircle, FaPaperPlane } from 'react-icons/fa'
+import { FaCheckCircle, FaPaperPlane, FaWhatsapp } from 'react-icons/fa'
 
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 const EMPTY_FORM = { name: '', email: '', message: '' }
@@ -54,6 +54,15 @@ function ContactModal({ show, onHide }) {
         <p className="contact-phone">
           Prefer a quick call? <a href="tel:+919893552904">+91 98935 52904</a>
         </p>
+        <a
+          className="contact-whatsapp"
+          href="https://wa.me/919893552904?text=Hi%20Codevyora%2C%20I%27d%20like%20to%20discuss%20a%20project."
+          target="_blank"
+          rel="noreferrer"
+        >
+          <FaWhatsapp aria-hidden="true" />
+          Chat on WhatsApp
+        </a>
         {submitted ? (
           <div className="success-box" role="status">
             <FaCheckCircle className="success-icon" aria-hidden="true" />

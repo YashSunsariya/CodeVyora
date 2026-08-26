@@ -39,12 +39,12 @@ function Hero() {
       <Container className="position-relative">
         <Row className="align-items-center g-5">
           <Col lg={6}>
-            <p className="hero-label">Code • Innovate • Elevate</p>
+            <p className="hero-label">Digital Product Studio</p>
 
             <h1 className="hero-title">
-              Building <span className="gradient-br">Digital</span>
+              Build Digital Products
               <br />
-              Experiences That Matter.
+              <span className="gradient-br">People Choose.</span>
             </h1>
 
             <p className="hero-subtitle">
@@ -70,6 +70,7 @@ function Hero() {
 
           <Col lg={6}>
             <div className="code-card" aria-hidden="true">
+              <span className="hero-card-badge">Web · Product · Tools</span>
               <div className="code-card-head">
                 <span className="window-dots">
                   <i className="dot-red" />

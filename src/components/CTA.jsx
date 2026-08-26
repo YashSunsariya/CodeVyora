@@ -1,5 +1,5 @@
 import { Button, Col, Container, Row } from 'react-bootstrap'
-import { FaArrowRight } from 'react-icons/fa'
+import { FaArrowRight, FaWhatsapp } from 'react-icons/fa'
 
 function CTA({ openContact }) {
   return (
@@ -18,9 +18,15 @@ function CTA({ openContact }) {
                 <Button onClick={openContact} className="btn-cv">
                   Start a Conversation <FaArrowRight aria-hidden="true" />
                 </Button>
-                <Button onClick={openContact} className="btn-cv-outline">
-                  Contact Us
-                </Button>
+                <a
+                  className="btn-cv-outline"
+                  href="https://wa.me/919893552904?text=Hi%20Codevyora%2C%20I%27d%20like%20to%20discuss%20a%20project."
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <FaWhatsapp aria-hidden="true" />
+                  Chat on WhatsApp
+                </a>
               </div>
 
               <div className="project-steps" aria-label="Project start process">
