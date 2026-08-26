@@ -1,5 +1,6 @@
 import { Button, Col, Container, Row } from 'react-bootstrap'
 import { FaArrowRight } from 'react-icons/fa'
+import { scrollToSection } from '../utils/navigation'
 
 const PARTICLES = [
   { left: '6%', top: '18%', size: 4, delay: '0s' },
@@ -47,15 +48,23 @@ function Hero() {
             </h1>
 
             <p className="hero-subtitle">
-              Codevyora builds modern digital products, developer-focused solutions and
-              scalable web experiences for the next generation of businesses.
+              We turn ambitious ideas into fast, reliable digital products that help businesses
+              launch with confidence and grow without costly rewrites.
             </p>
 
             <div className="hero-actions d-flex flex-column flex-sm-row gap-3">
-              <Button href="#solutions" className="btn-cv">
+              <Button href="#solutions" onClick={(event) => scrollToSection(event, 'solutions')} className="btn-cv">
                 Explore Our Work <FaArrowRight aria-hidden="true" />
               </Button>
-              <Button href="#contact" className="btn-cv-outline">Let's Build Together</Button>
+              <Button href="#contact" onClick={(event) => scrollToSection(event, 'contact')} className="btn-cv-outline">
+                Let's Build Together
+              </Button>
+            </div>
+
+            <div className="hero-trust" aria-label="What you can expect">
+              <span>Clear scope</span>
+              <span>Thoughtful design</span>
+              <span>Built to scale</span>
             </div>
           </Col>
 

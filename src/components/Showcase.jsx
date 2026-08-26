@@ -1,5 +1,6 @@
 import { Button, Col, Container, Row } from 'react-bootstrap'
 import { FaArrowRight } from 'react-icons/fa'
+import { scrollToSection } from '../utils/navigation'
 
 function Showcase() {
   return (
@@ -56,8 +57,8 @@ function Showcase() {
                 We transform ideas into reliable digital experiences using modern technologies
                 and practical engineering.
               </p>
-              <Button href="#contact" className="btn-cv">
-                View Projects <FaArrowRight aria-hidden="true" />
+              <Button href="#contact" onClick={(event) => scrollToSection(event, 'contact')} className="btn-cv">
+                Discuss Your Project <FaArrowRight aria-hidden="true" />
               </Button>
             </div>
           </Col>

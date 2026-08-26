@@ -26,6 +26,11 @@ function ContactModal({ show, onHide }) {
     setErrors(nextErrors)
     if (Object.keys(nextErrors).length > 0) return
 
+    const subject = encodeURIComponent(`New project inquiry from ${form.name.trim()}`)
+    const body = encodeURIComponent(
+      `Name: ${form.name.trim()}\nEmail: ${form.email.trim()}\n\nProject details:\n${form.message.trim()}`,
+    )
+    window.location.href = `mailto:codevyora@gmail.com?subject=${subject}&body=${body}`
     setSubmitted(true)
   }
 
@@ -46,10 +51,13 @@ function ContactModal({ show, onHide }) {
       </Modal.Header>
 
       <Modal.Body>
+        <p className="contact-phone">
+          Prefer a quick call? <a href="tel:+919893552904">+91 98935 52904</a>
+        </p>
         {submitted ? (
           <div className="success-box" role="status">
             <FaCheckCircle className="success-icon" aria-hidden="true" />
-            <p className="success-text mb-0">Thanks! Your message has been noted. We'll get back to you soon.</p>
+            <p className="success-text mb-0">Your email app is opening with your project message ready to send.</p>
           </div>
         ) : (
           <Form noValidate onSubmit={handleSubmit}>

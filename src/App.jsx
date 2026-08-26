@@ -42,7 +42,7 @@ function App() {
 
   return (
     <>
-      <Navbar />
+      <Navbar openContact={openContact} />
       <main>
         <Hero />
         <Features />

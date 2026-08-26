@@ -1,6 +1,7 @@
 import { Col, Container, Row } from 'react-bootstrap'
 import { FaGithub, FaInstagram, FaLinkedinIn, FaXTwitter } from 'react-icons/fa6'
 import Brand from './Brand'
+import { scrollToSection } from '../utils/navigation'
 
 const navLinks = [
   { label: 'Home', href: '#home' },
@@ -22,10 +23,11 @@ function Footer({ openContact }) {
       <Container>
         <Row className="footer-top align-items-center g-4 text-center text-lg-start">
           <Col lg={4}>
-            <a href="#home" className="brand">
+            <a href="#home" onClick={(event) => scrollToSection(event, 'home')} className="brand">
               <Brand />
             </a>
             <p className="footer-tagline">Code • Innovate • Elevate</p>
+            <a className="footer-phone" href="tel:+919893552904">+91 98935 52904</a>
           </Col>
 
           <Col lg={4} className="text-lg-center">
@@ -33,7 +35,13 @@ function Footer({ openContact }) {
               <ul className="footer-links">
                 {navLinks.map((link) => (
                   <li key={link.label}>
-                    <a href={link.href} className="footer-link">{link.label}</a>
+                    <a
+                      href={link.href}
+                      onClick={(event) => scrollToSection(event, link.href.slice(1))}
+                      className="footer-link"
+                    >
+                      {link.label}
+                    </a>
                   </li>
                 ))}
                 <li>

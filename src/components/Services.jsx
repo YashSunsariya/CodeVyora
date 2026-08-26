@@ -14,37 +14,37 @@ const services = [
     num: '01',
     icon: FaGlobe,
     title: 'Web Development',
-    text: 'Modern, responsive and scalable web applications.',
+    text: 'Conversion-focused websites and web apps that are fast on every screen.',
   },
   {
     num: '02',
     icon: FaPalette,
     title: 'UI/UX Development',
-    text: 'Clean interfaces focused on usability and experience.',
+    text: 'Clear, intuitive interfaces that make complex products easy to use.',
   },
   {
     num: '03',
     icon: FaReact,
     title: 'Frontend Development',
-    text: 'Fast and interactive experiences using modern technologies.',
+    text: 'Responsive frontends that feel polished, quick and dependable.',
   },
   {
     num: '04',
     icon: FaServer,
     title: 'Backend Development',
-    text: 'Secure and scalable APIs and backend systems.',
+    text: 'Reliable APIs and systems that keep your product ready for growth.',
   },
   {
     num: '05',
     icon: FaTools,
     title: 'Developer Tools',
-    text: 'Reusable components and tools that improve development.',
+    text: 'Reusable foundations that help your team ship better, faster.',
   },
   {
     num: '06',
     icon: FaRocket,
     title: 'Digital Solutions',
-    text: 'Technology solutions designed around real business needs.',
+    text: 'Practical technology choices tied to your goals, budget and timeline.',
   },
 ]
 
