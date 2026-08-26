@@ -1,6 +1,7 @@
 import { Button, Col, Container, Row } from 'react-bootstrap'
 import { FaArrowRight } from 'react-icons/fa'
-import { scrollToSection } from '../utils/navigation'
+import { useNavigate } from 'react-router-dom'
+import { navigateToSection } from '../utils/navigation'
 
 const PARTICLES = [
   { left: '6%', top: '18%', size: 4, delay: '0s' },
@@ -12,6 +13,8 @@ const PARTICLES = [
 ]
 
 function Hero() {
+  const navigate = useNavigate()
+
   return (
     <section id="home" className="hero d-flex align-items-center">
       <div className="hero-grid" aria-hidden="true" />
@@ -53,10 +56,10 @@ function Hero() {
             </p>
 
             <div className="hero-actions d-flex flex-column flex-sm-row gap-3">
-              <Button href="#solutions" onClick={(event) => scrollToSection(event, 'solutions')} className="btn-cv">
+              <Button href="/solutions" onClick={(event) => navigateToSection(event, navigate, '/solutions', 'solutions')} className="btn-cv">
                 Explore Our Work <FaArrowRight aria-hidden="true" />
               </Button>
-              <Button href="#contact" onClick={(event) => scrollToSection(event, 'contact')} className="btn-cv-outline">
+              <Button href="/contact" onClick={(event) => { event.preventDefault(); navigate('/contact') }} className="btn-cv-outline">
                 Let's Build Together
               </Button>
             </div>

@@ -1,13 +1,14 @@
 import { Col, Container, Row } from 'react-bootstrap'
 import { FaGithub, FaInstagram, FaLinkedinIn, FaXTwitter } from 'react-icons/fa6'
 import Brand from './Brand'
-import { scrollToSection } from '../utils/navigation'
+import { navigateToSection } from '../utils/navigation'
+import { useNavigate } from 'react-router-dom'
 
 const navLinks = [
-  { label: 'Home', href: '#home' },
-  { label: 'About', href: '#about' },
-  { label: 'Services', href: '#services' },
-  { label: 'Solutions', href: '#solutions' },
+  { label: 'Home', route: '/home', section: 'home' },
+  { label: 'About', route: '/about', section: 'about' },
+  { label: 'Services', route: '/services', section: 'services' },
+  { label: 'Solutions', route: '/solutions', section: 'solutions' },
 ]
 
 const socials = [
@@ -18,12 +19,13 @@ const socials = [
 ]
 
 function Footer({ openContact }) {
+  const navigate = useNavigate()
   return (
     <footer className="footer">
       <Container>
         <Row className="footer-top align-items-center g-4 text-center text-lg-start">
           <Col lg={4}>
-            <a href="#home" onClick={(event) => scrollToSection(event, 'home')} className="brand">
+            <a href="/home" onClick={(event) => navigateToSection(event, navigate, '/home', 'home')} className="brand">
               <Brand />
             </a>
             <p className="footer-tagline">Code • Innovate • Elevate</p>
@@ -36,8 +38,8 @@ function Footer({ openContact }) {
                 {navLinks.map((link) => (
                   <li key={link.label}>
                     <a
-                      href={link.href}
-                      onClick={(event) => scrollToSection(event, link.href.slice(1))}
+                      href={link.route}
+                      onClick={(event) => navigateToSection(event, navigate, link.route, link.section)}
                       className="footer-link"
                     >
                       {link.label}

@@ -1,6 +1,6 @@
-export function scrollToSection(event, sectionId, onComplete) {
+export function navigateToSection(event, navigate, route, sectionId, onComplete) {
   event.preventDefault()
+  navigate(route)
   document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
-  window.history.replaceState(null, '', `${window.location.pathname}${window.location.search}`)
   onComplete?.()
 }

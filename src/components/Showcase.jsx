@@ -1,8 +1,10 @@
 import { Button, Col, Container, Row } from 'react-bootstrap'
 import { FaArrowRight } from 'react-icons/fa'
-import { scrollToSection } from '../utils/navigation'
+import { useNavigate } from 'react-router-dom'
+import { navigateToSection } from '../utils/navigation'
 
 function Showcase() {
+  const navigate = useNavigate()
   const concepts = [
     {
       type: 'Local Business Concept',
@@ -102,7 +104,7 @@ function Showcase() {
                 This Codevyora website is our first live concept: a responsive brand experience
                 designed to turn attention into meaningful conversations.
               </p>
-              <Button href="#contact" onClick={(event) => scrollToSection(event, 'contact')} className="btn-cv">
+              <Button href="/contact" onClick={(event) => navigateToSection(event, navigate, '/contact', 'contact')} className="btn-cv">
                 Discuss Your Project <FaArrowRight aria-hidden="true" />
               </Button>
             </div>

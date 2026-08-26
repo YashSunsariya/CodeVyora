@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { FaWhatsapp } from 'react-icons/fa'
+import { useLocation, useNavigate } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import Features from './components/Features'
@@ -17,13 +18,22 @@ import PageLoader from './components/PageLoader'
 function App() {
   const [showContact, setShowContact] = useState(false)
   const [isLoading, setIsLoading] = useState(true)
-  const openContact = () => setShowContact(true)
+  const location = useLocation()
+  const navigate = useNavigate()
+  const openContact = () => navigate('/contact')
 
   useEffect(() => {
     const loadDuration = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 250 : 850
     const timer = window.setTimeout(() => setIsLoading(false), loadDuration)
     return () => window.clearTimeout(timer)
   }, [])
+
+  useEffect(() => {
+    const sectionId = location.pathname.split('/')[1] || 'home'
+    const section = document.getElementById(sectionId)
+    if (section) window.setTimeout(() => section.scrollIntoView({ behavior: 'smooth', block: 'start' }), 0)
+    setShowContact(location.pathname === '/contact')
+  }, [location.pathname])
 
   useEffect(() => {
     const targets = document.querySelectorAll('.reveal, .reveal-stagger')
@@ -53,7 +63,7 @@ function App() {
   return (
     <>
       <PageLoader visible={isLoading} />
-      <Navbar openContact={openContact} />
+      <Navbar />
       <main>
         <Hero />
         <Features />
@@ -66,7 +76,7 @@ function App() {
         <CTA openContact={openContact} />
       </main>
       <Footer openContact={openContact} />
-      <ContactModal show={showContact} onHide={() => setShowContact(false)} />
+      <ContactModal show={showContact} onHide={() => navigate('/why-codevyora')} />
       <a
         className="floating-whatsapp"
         href="https://wa.me/919893552904?text=Hi%20Codevyora%2C%20I%27d%20like%20to%20discuss%20a%20project."
