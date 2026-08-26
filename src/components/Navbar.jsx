@@ -9,7 +9,7 @@ const links = [
   { label: 'Home', route: '/home', section: 'home' },
   { label: 'About', route: '/about', section: 'about' },
   { label: 'Services', route: '/services', section: 'services' },
-  { label: 'Solutions', route: '/solutions', section: 'solutions' },
+  { label: 'Projects', route: '/projects', section: 'solutions' },
   { label: 'Why Codevyora', route: '/why-codevyora', section: 'why-codevyora' },
 ]
 

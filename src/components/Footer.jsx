@@ -8,7 +8,7 @@ const navLinks = [
   { label: 'Home', route: '/home', section: 'home' },
   { label: 'About', route: '/about', section: 'about' },
   { label: 'Services', route: '/services', section: 'services' },
-  { label: 'Solutions', route: '/solutions', section: 'solutions' },
+  { label: 'Projects', route: '/projects', section: 'solutions' },
 ]
 
 const socials = [

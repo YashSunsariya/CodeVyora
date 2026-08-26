@@ -56,7 +56,7 @@ function Hero() {
             </p>
 
             <div className="hero-actions d-flex flex-column flex-sm-row gap-3">
-              <Button href="/solutions" onClick={(event) => navigateToSection(event, navigate, '/solutions', 'solutions')} className="btn-cv">
+              <Button href="/projects" onClick={(event) => navigateToSection(event, navigate, '/projects', 'solutions')} className="btn-cv">
                 Explore Our Work <FaArrowRight aria-hidden="true" />
               </Button>
               <Button href="/contact" onClick={(event) => { event.preventDefault(); navigate('/contact') }} className="btn-cv-outline">

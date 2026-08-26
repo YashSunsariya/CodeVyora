@@ -14,6 +14,16 @@ import CTA from './components/CTA'
 import Footer from './components/Footer'
 import ContactModal from './components/ContactModal'
 import PageLoader from './components/PageLoader'
+import { pageSeo, siteConfig } from './config/site'
+
+const routeSections = {
+  home: 'home',
+  about: 'about',
+  services: 'services',
+  projects: 'solutions',
+  solutions: 'solutions',
+  'why-codevyora': 'why-codevyora',
+}
 
 function App() {
   const [showContact, setShowContact] = useState(false)
@@ -23,14 +33,58 @@ function App() {
   const openContact = () => navigate('/contact')
 
   useEffect(() => {
+    const routeKey = location.pathname.split('/').filter(Boolean)[0] || 'home'
+    const seo = pageSeo[routeKey] || pageSeo.home
+    const canonicalPath = location.pathname === '/' || location.pathname === '/home' ? '/' : location.pathname
+    const canonicalUrl = `${siteConfig.url}${canonicalPath}`
+
+    document.title = seo.title
+    document.querySelector('meta[name="description"]')?.setAttribute('content', seo.description)
+    document.querySelector('meta[name="robots"]')?.setAttribute('content', 'index, follow')
+    document.querySelector('link[rel="canonical"]')?.setAttribute('href', canonicalUrl)
+    document.querySelector('meta[property="og:title"]')?.setAttribute('content', seo.title)
+    document.querySelector('meta[property="og:description"]')?.setAttribute('content', seo.description)
+    document.querySelector('meta[property="og:url"]')?.setAttribute('content', canonicalUrl)
+    document.querySelector('meta[name="twitter:title"]')?.setAttribute('content', seo.title)
+    document.querySelector('meta[name="twitter:description"]')?.setAttribute('content', seo.description)
+
+    const structuredData = {
+      '@context': 'https://schema.org',
+      '@graph': [
+        {
+          '@type': 'Organization',
+          name: siteConfig.name,
+          url: siteConfig.url,
+          logo: `${siteConfig.url}${siteConfig.logo}`,
+          email: siteConfig.email,
+          telephone: siteConfig.phone,
+        },
+        {
+          '@type': 'WebSite',
+          name: siteConfig.name,
+          url: siteConfig.url,
+        },
+      ],
+    }
+    let jsonLd = document.querySelector('script[data-codevyora-schema]')
+    if (!jsonLd) {
+      jsonLd = document.createElement('script')
+      jsonLd.type = 'application/ld+json'
+      jsonLd.dataset.codevyoraSchema = 'true'
+      document.head.appendChild(jsonLd)
+    }
+    jsonLd.textContent = JSON.stringify(structuredData)
+  }, [location.pathname])
+
+  useEffect(() => {
     const loadDuration = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 250 : 850
     const timer = window.setTimeout(() => setIsLoading(false), loadDuration)
     return () => window.clearTimeout(timer)
   }, [])
 
   useEffect(() => {
-    const sectionId = location.pathname.split('/')[1] || 'home'
-    const section = document.getElementById(sectionId)
+    const routeKey = location.pathname.split('/').filter(Boolean)[0] || 'home'
+    const section = document.getElementById(routeSections[routeKey])
     if (section) window.setTimeout(() => section.scrollIntoView({ behavior: 'smooth', block: 'start' }), 0)
     setShowContact(location.pathname === '/contact')
   }, [location.pathname])
